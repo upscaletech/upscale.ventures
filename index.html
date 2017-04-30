@@ -369,24 +369,7 @@
 		                        <div class="masonry masonry-blog">
 		                            <div class="masonry__container masonry--animate masonry--active">
 		                                <div class="col-md-4 col-sm-6 masonry__item">
-		                                    <a href="#">
-		                                        <div class="card card-4">
-		                                            <div class="card__image">
-		                                                <img alt="Pic" src="img/small5.jpg">
-		                                            </div>
-		                                            <div class="card__body boxed boxed--sm bg--white">
-		                                                <h6>Travel</h6>
-		                                                <div class="card__title">
-		                                                    <h5>Western Australia's top undiscovered hot spots</h5>
-		                                                </div>
-		                                                <hr>
-		                                                <div class="card__lower">
-		                                                    <span>by</span>
-		                                                    <span class="h6">Luke Gibson</span>
-		                                                </div>
-		                                            </div>
-		                                        </div>
-		                                    </a>
+		                                    <div id="content"></div>
 		                                </div>
 
 
@@ -469,6 +452,43 @@
 
 
 		<script src="js/jquery-2.1.4.min.js"></script>
+	    <script type="text/javascript">
+    var content = document.getElementById('content');
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState==4 && xhr.status==200)
+        {
+            var data = JSON.parse(xhr.responseText);
+            if(data.status == 'ok'){
+
+                var output = '<h1>'+data.feed.title+'</h1>';
+
+                for(var i=0;i<data.items.length;++i){
+
+                    output += '<a href="' +
+                    data.items[i].link + '" >' + '<div class="card__body boxed boxed--sm bg--white">' +
+                    '<h6>'+ data.items[i].categories +'</h6>' +  '<div class="card__title">' +
+                      '<h5>' + 
+                    data.items[i].title + '</h5>' +'</div>' + '<div class="card__lower">' + '<span>by</span>'
+                    + '<span class="h6">'+ data.items[i].author+'</span></div> </div></div>'
+		                                                    
+		                                                    
+		                                                 +'</a>';
+
+                }
+
+
+                content.innerHTML = output;
+
+            }
+        }
+    };
+    xhr.open('GET','https://api.rss2json.com/v1/api.json?rss_url=http://blog.theupscale.in/rss',true);
+    xhr.send();
+
+</script>
 	   
         <script src="js/isotope.min.js"></script>
         <script src="js/smooth-scroll.min.js"></script>
