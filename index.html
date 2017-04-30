@@ -463,11 +463,11 @@
             var data = JSON.parse(xhr.responseText);
             if(data.status == 'ok'){
 
-                var output = 'Upscale Blog';
+                var output = '<h1>'+data.feed.title+'</h1>';
 
                 for(var i=0;i<data.items.length;++i){
 
-                    output += '<a href="' +
+                    output += '<div class="col-md-4 col-sm-6 masonry__item">' +'<a href="' +
                     data.items[i].link + '" >' + '<div class="card__body boxed boxed--sm bg--white">' +
                     '<h6>'+ data.items[i].categories +'</h6>' +  '<div class="card__title">' +
                       '<h5>' + 
@@ -475,7 +475,7 @@
                     + '<span class="h6">'+ data.items[i].author+'</span></div> </div></div>'
 		                                                    
 		                                                    
-		                                                 +'</a>';
+		                                                 +'</a>' + '</div>';
 
                 }
 
