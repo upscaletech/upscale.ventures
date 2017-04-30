@@ -371,50 +371,8 @@
 		                                <div id="content" class="col-md-4 col-sm-6 masonry__item">
 		                                    
 		                                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		                            </div>
 
-		                        </div>
-
-		                        <div class="pagination-container">
-		                            <hr>
-		                            <ul class="pagination">
-		                                <li>
-		                                    <a href="#">
-		                                        <span>←</span>
-		                                    </a>
-		                                </li>
-		                                <li class="active">
-		                                    <a href="#">1</a>
-		                                </li>
-		                                <li>
-		                                    <a href="#">2</a>
-		                                </li>
-		                                <li>
-		                                    <a href="#">3</a>
-		                                </li>
-		                                <li>
-		                                    <a href="#">
-		                                        <span>→</span>
-		                                    </a>
-		                                </li>
-		                            </ul>
 		                        </div>
 		                    </div>
 
@@ -467,7 +425,7 @@
 
                 for(var i=0;i<data.items.length;++i){
 
-                    output +=  '<a href="' +
+                    output += '<div class="col-md-4 col-sm-6 masonry__item">' + '<a href="' +
                     data.items[i].link + '" >' + '<div class="card__body boxed boxed--sm bg--white">' +
                     '<h6>'+ data.items[i].categories +'</h6>' +  '<div class="card__title">' +
                       '<h5>' + 
@@ -475,7 +433,7 @@
                     + '<span class="h6">'+ data.items[i].author+'</span></div> </div></div>'
 		                                                    
 		                                                    
-		                                                 +'</a>' + '</div>';
+		                                                 +'</a>' + '</div>' + '</div>';
 
                 }
 
